@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SampleGSMViaPortsApp": {
+      "commandName": "Project",
+      "commandLineArgs": "Com18"
+    }
+  }
+}
