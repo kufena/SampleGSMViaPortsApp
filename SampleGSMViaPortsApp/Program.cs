@@ -76,6 +76,8 @@ namespace SampleGSMViaPortsApp
             // I found pressing ctrl-z then <ESC> pulled it out of the command.
             // Then type AT and return and see if an OK is returned.
             // If not reset the device, i guess.
+            //
+            // NOTE \u001a is unicode for ctrl-z, \u001B is the escape charater.
             sp.WriteLine($"AT+CMGS=\"{number}\"\r");
             sp.WriteLine($"{msg}\r\u001a\u001B"); // sendmsg, 0, sendmsg.Length);
 
