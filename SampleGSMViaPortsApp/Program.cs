@@ -51,7 +51,8 @@ namespace SampleGSMViaPortsApp
             // open state.  It'll throw an exception if there's some other
             // problem like if already in use (is Putty still connected?)
             SerialPort sp = new SerialPort(args[0], baud, Parity.None, 8, StopBits.One); //, 115200);
-                        
+
+            sp.Handshake = Handshake.XOnXOff;
             sp.DtrEnable = dtrEnabled;
             sp.Open();
             Console.WriteLine($"baud is {sp.BaudRate}");
