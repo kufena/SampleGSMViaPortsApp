@@ -48,12 +48,7 @@ namespace SampleGSMViaPortsApp
             sp = new SerialPort
             {
                 PortName = args[0],
-                DtrEnable = true,
-                RtsEnable = true,
                 BaudRate = baud,
-                Parity = Parity.None,
-                DataBits = 8,
-                StopBits = StopBits.One,
                 ReadTimeout = 2000
             };
 
