@@ -52,7 +52,7 @@ namespace SampleGSMViaPortsApp
             // problem like if already in use (is Putty still connected?)
             SerialPort sp = new SerialPort(args[0], baud, Parity.None, 8, StopBits.One); //, 115200);
 
-            sp.Handshake = Handshake.None;
+            sp.Handshake = Handshake.RequestToSend;
             sp.DtrEnable = dtrEnabled;
             sp.Open();
             Console.WriteLine($"baud is {sp.BaudRate}");
