@@ -31,11 +31,20 @@ namespace SampleGSMViaPortsApp
             // We expect device to be given as cmd line argument.
             Console.WriteLine("Simple App to send an sms");
             Console.WriteLine($"Using device {args[0]}");
+            int baud = 115200;
+            if (args.Length > 1)
+            {
+                if (!Int32.TryParse(args[1], out baud))
+                {
+                    Console.WriteLine($"Value \"{args[1]}\" is not an integer.");
+                    return;
+                }
+            }
 
             // Open the serial port to our device and ensure it is in an
             // open state.  It'll throw an exception if there's some other
             // problem like if already in use (is Putty still connected?)
-            SerialPort sp = new SerialPort(args[0]); //, 115200);
+            SerialPort sp = new SerialPort(args[0], baud); //, 115200);
             sp.Open();
             Console.WriteLine($"baud is {sp.BaudRate}");
             if (!sp.IsOpen)
