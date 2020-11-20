@@ -49,11 +49,18 @@ namespace SampleGSMViaPortsApp
             {
                 PortName = args[0],
                 BaudRate = baud,
-                ReadTimeout = 2000
+                ReadTimeout = 2000,
             };
 
             sp.ReadTimeout = 2000;
-            sp.Open();
+            try
+            {
+                sp.Open();
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            
             Console.WriteLine($"baud is {sp.BaudRate}");
             if (!sp.IsOpen)
             {
