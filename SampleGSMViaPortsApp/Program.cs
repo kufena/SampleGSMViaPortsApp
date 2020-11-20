@@ -35,8 +35,9 @@ namespace SampleGSMViaPortsApp
             // Open the serial port to our device and ensure it is in an
             // open state.  It'll throw an exception if there's some other
             // problem like if already in use (is Putty still connected?)
-            SerialPort sp = new SerialPort(args[0], 115200);
+            SerialPort sp = new SerialPort(args[0]); //, 115200);
             sp.Open();
+            Console.WriteLine($"baud is {sp.BaudRate}");
             if (!sp.IsOpen)
             {
                 Console.WriteLine("Not open for some reason.");
