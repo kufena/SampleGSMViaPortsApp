@@ -54,7 +54,7 @@ namespace SampleGSMViaPortsApp
 
             sp.Handshake = Handshake.RequestToSend;
             sp.RtsEnable = true;
-            sp.DtrEnable = dtrEnabled;
+            //sp.DtrEnable = false;
             sp.Open();
             Console.WriteLine($"baud is {sp.BaudRate}");
             if (!sp.IsOpen)
