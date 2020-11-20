@@ -41,10 +41,17 @@ namespace SampleGSMViaPortsApp
                 }
             }
 
+            bool dtrEnabled = true;
+            if (args.Length > 2)
+            {
+                Boolean.TryParse(args[2], out dtrEnabled);
+            }
+
             // Open the serial port to our device and ensure it is in an
             // open state.  It'll throw an exception if there's some other
             // problem like if already in use (is Putty still connected?)
             SerialPort sp = new SerialPort(args[0], baud); //, 115200);
+            sp.DtrEnable = dtrEnabled;
             sp.Open();
             Console.WriteLine($"baud is {sp.BaudRate}");
             if (!sp.IsOpen)
