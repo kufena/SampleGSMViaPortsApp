@@ -51,6 +51,8 @@ namespace SampleGSMViaPortsApp
                 PortName = args[0],
                 BaudRate = baud,
                 ReadTimeout = 2000,
+                Handshake = Handshake.XOnXOff,
+                DiscardNull = true
             };
 
             //SerialPortStream sp;
