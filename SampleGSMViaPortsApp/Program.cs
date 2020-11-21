@@ -1,8 +1,8 @@
 ﻿using System;
-//using System.IO.Ports;
+using System.IO.Ports;
 using System.Text;
 using System.Threading;
-using RJCP.IO.Ports;
+//using RJCP.IO.Ports;
 
 namespace SampleGSMViaPortsApp
 {
@@ -45,20 +45,20 @@ namespace SampleGSMViaPortsApp
             // Open the serial port to our device and ensure it is in an
             // open state.  It'll throw an exception if there's some other
             // problem like if already in use (is Putty still connected?)
-            //SerialPort sp; // = new SerialPort(args[0], baud, Parity.None, 8, StopBits.One); //, 115200);
-            //sp = new SerialPort
-            //{
-            //    PortName = args[0],
-            //    BaudRate = baud,
-            //    ReadTimeout = 2000,
-            //};
-
-            SerialPortStream sp;
-            sp = new SerialPortStream
+            SerialPort sp; // = new SerialPort(args[0], baud, Parity.None, 8, StopBits.One); //, 115200);
+            sp = new SerialPort
             {
                 PortName = args[0],
-                BaudRate = baud
+                BaudRate = baud,
+                ReadTimeout = 2000,
             };
+
+            //SerialPortStream sp;
+            //sp = new SerialPortStream
+            //{
+            //    PortName = args[0],
+            //    BaudRate = baud
+            //};
 
             //sp.ReadTimeout = 2000;
 
@@ -76,6 +76,8 @@ namespace SampleGSMViaPortsApp
                 Console.WriteLine("Not open for some reason.");
                 return;
             }
+
+            Thread.Sleep(5000);
 
             // Send the most basic AT command and hope.
             // I've converted to ascii here, but there seems to be no need.
